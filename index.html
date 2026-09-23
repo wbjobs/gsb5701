@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>实时听写 · Speech Dictation</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <h1>实时听写</h1>
+      <p class="subtitle">基于浏览器 SpeechRecognition 的连续语音识别</p>
+    </header>
+
+    <div id="unsupported" class="banner banner-error hidden">
+      当前浏览器不支持 SpeechRecognition API，请使用 Chrome / Edge 最新版本。
+    </div>
+    <div id="status-banner" class="banner banner-warn hidden"></div>
+
+    <section class="toolbar">
+      <button id="btn-start" class="btn btn-primary">开始</button>
+      <button id="btn-stop" class="btn" disabled>停止</button>
+      <button id="btn-clear" class="btn">清空</button>
+      <button id="btn-copy" class="btn">复制</button>
+      <div class="lang-switch" role="group" aria-label="语言切换">
+        <button class="lang-btn active" data-lang="zh-CN">中文</button>
+        <button class="lang-btn" data-lang="en-US">English</button>
+      </div>
+    </section>
+
+    <section class="status-bar">
+      <span id="mic-state" class="dot dot-idle"></span>
+      <span id="status-text">就绪</span>
+      <span id="timer" class="timer">00:00</span>
+    </section>
+
+    <section class="transcript-wrap">
+      <div id="transcript" class="transcript" aria-live="polite">
+        <div id="final-segments"></div>
+        <span id="interim" class="interim"></span>
+        <p id="placeholder" class="placeholder">点击「开始」后说话，识别结果将实时显示在这里…</p>
+      </div>
+    </section>
+
+    <section class="history">
+      <div class="history-header">
+        <h2>听写历史</h2>
+        <button id="btn-clear-history" class="btn btn-small">清空历史</button>
+      </div>
+      <ul id="history-list" class="history-list"></ul>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

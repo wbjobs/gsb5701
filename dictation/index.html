@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>实时听写 · Speech Dictation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <h1>实时听写</h1>
+      <div class="controls">
+        <div class="lang-switch" role="group" aria-label="语言切换">
+          <button id="langZh" class="lang-btn active" data-lang="zh-CN">中文</button>
+          <button id="langEn" class="lang-btn" data-lang="en-US">English</button>
+        </div>
+        <button id="btnStart" class="btn btn-primary">开始</button>
+        <button id="btnStop" class="btn btn-danger" disabled>停止</button>
+        <button id="btnClear" class="btn">清空</button>
+        <button id="btnCopy" class="btn">复制</button>
+      </div>
+    </header>
+
+    <div id="banner" class="banner hidden" role="alert"></div>
+
+    <section class="status-bar">
+      <span id="statusDot" class="dot dot-idle"></span>
+      <span id="statusText">就绪</span>
+      <span class="spacer"></span>
+      <span id="elapsed">00:00</span>
+      <span id="restartInfo" class="muted"></span>
+    </section>
+
+    <section id="transcript" class="transcript" aria-live="polite">
+      <div id="finalText" class="final-text"></div>
+      <span id="interimText" class="interim-text"></span>
+      <span id="placeholder" class="placeholder">点击「开始」后说话，识别结果会实时显示在这里…</span>
+    </section>
+
+    <section class="history">
+      <h2>历史记录 <button id="btnRefreshHistory" class="btn btn-small" title="刷新">⟳</button></h2>
+      <ul id="historyList" class="history-list"></ul>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
